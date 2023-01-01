@@ -16,24 +16,25 @@ typedef struct date
     int year;
 } date_t;
 
+// Allowable date formats
 typedef enum formats
 {
     MMM_DD_YYYY = 0,
     DD_MMM_YYYY
 } format_t;
 
-// Convert date to string and store it in dest.
+// Convert date to string and store it in dest
 //  - String will be of the form (Jul-02-2022)
 void date_to_string(date_t date, char* dest);
 
-// Convert date to string
-//  -   String must be in the form specified by INPUT_FORMAT.
-//  Options for the input format are in the format enum.
+// Convert string to date
+//  - String must be in the form specified by INPUT_FORMAT.
 date_t string_to_date(char* src);
 
-// Prints a date in the form (Jul-02-2022)
-//  - char c allows a \t or a \n character to be inserted.
+// Print a date in the form (Jul-02-2022)
+//  - Param allows a \t or a \n character to be inserted.
 void print_date(date_t date, char c);
 
-// Takes in an array of type date_t[] and sorts it
+// Sort an array of type date_t[]
+//  - Param allows for ascending or descending sort order.
 void sort_dates(date_t* dates, int num_dates, int asc);
