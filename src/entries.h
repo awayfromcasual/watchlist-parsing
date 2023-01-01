@@ -15,6 +15,15 @@ typedef struct entry
     int score;
 } entry_t;
 
+// Allowable sort orders
+typedef enum orders
+{
+    START_DATE = 0,
+    END_DATE,
+    TITLE,
+    SCORE
+} order_t;
+
 // Convert entry to string and store it in dest
 void entry_to_string(entry_t e, char* dest);
 
@@ -27,4 +36,5 @@ void print_entry(entry_t e, char c);
 
 // Sort an array of type entry_t[]
 //  - Param allows for ascending or descending sort order.
-void sort_entries(entry_t* entries, int num_entries, int asc);
+void sort_entries(entry_t* entries, int num_entries, order_t ord,
+                  int reverse);

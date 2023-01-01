@@ -23,6 +23,9 @@ int main(int argc, char** argv)
     // Input buffer
     char input[BUFFER_SIZE];
 
+    entry_t entries[10];
+    int index = 0;
+    // While not reading EOF or \n
     while (fgets(input, BUFFER_SIZE, file_ptr) != NULL
            && *input != '\n')
     {
@@ -34,7 +37,18 @@ int main(int argc, char** argv)
         // Print what was read
         printf("%s\t%s\t%s\t%s\n", start_date, end_date, title,
                score);
+
+        entries[index] = string_to_entry(input);
+        index++;
     }
+
+    for (int i = 0; i < 10; i++)
+        print_entry(entries[i], '\n');
+
+    sort_entries(entries, 10, END_DATE, REVERSE);
+
+    for (int i = 0; i < 10; i++)
+        print_entry(entries[i], '\n');
 
     printf("\n--------\n");
 

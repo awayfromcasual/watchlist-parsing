@@ -3,6 +3,7 @@
 #include "dates.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 void entry_to_string(entry_t e, char* dest)
@@ -42,7 +43,42 @@ void print_entry(entry_t e, char c)
     printf("%s%c", text, c);
 }
 
-void sort_entries(entry_t* entries, int num_entries, int asc)
+int compare_entries_by_start(const void* p, const void* q)
 {
-    ;
+    entry_t e1 = *(const entry_t*) p;
+    entry_t e2 = *(const entry_t*) q;
+
+    return compare_dates(&(e1.start_date), &(e2.start_date));
+}
+
+int compare_entries_by_end(const void* p, const void* q)
+{
+    entry_t e1 = *(const entry_t*) p;
+    entry_t e2 = *(const entry_t*) q;
+
+    return compare_dates(&(e1.end_date), &(e2.end_date));
+}
+
+void sort_entries(entry_t* entries, int num_entries, order_t ord,
+                  int reverse)
+{
+    if (ord == START_DATE)
+        qsort(entries, num_entries, sizeof(entries[0]),
+              compare_entries_by_start);
+    else if (ord == END_DATE)
+        qsort(entries, num_entries, sizeof(entries[0]),
+              compare_entries_by_end);
+
+    if (reverse)
+    {
+        int l = 0, r = num_entries - 1;
+        while (l < r)
+        {
+            entry_t temp = entries[l];
+            entries[l] = entries[r];
+            entries[r] = temp;
+            l++;
+            r--;
+        }
+    }
 }
