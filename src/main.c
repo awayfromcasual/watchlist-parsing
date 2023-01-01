@@ -1,21 +1,21 @@
 
 #include <stdio.h>
 
-#define BUF_SIZE 120
+#define BUF_SIZE 150
 
 int main()
 {
     printf("Hello, Fen!\n");
 
-    char input[BUF_SIZE];
+    char input[200];
 
     fgets(input, BUF_SIZE, stdin);
 
-    char start_date[13], end_date[13], title[90];
+    char start_date[20], end_date[20], title[100], score[10];
     int score;
 
     sscanf(input, "%s %s %[^\t] %d", start_date, end_date, title,
-           &score);
+           score);
 
     printf("%s\n", start_date);
     printf("%s\n", end_date);
