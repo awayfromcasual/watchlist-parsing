@@ -53,7 +53,7 @@ void print_date(date_t date, char c)
     printf("%s%c", text, c);
 }
 
-int date_comparator(const void* p, const void* q)
+int date_compare(const void* p, const void* q)
 {
     date_t d1 = *(const date_t*) p;
     date_t d2 = *(const date_t*) q;
@@ -65,24 +65,17 @@ int date_comparator(const void* p, const void* q)
     return d1.year - d2.year;
 }
 
-int date_reverse_comparator(const void* p, const void* q)
+int date_rev_compare(const void* p, const void* q)
 {
-    date_t d1 = *(const date_t*) q;
-    date_t d2 = *(const date_t*) p;
-
-    if (d1.year == d2.year)
-        return (d1.month == d2.month) ? (d1.day - d2.day)
-                                      : (d1.month - d2.month);
-
-    return d1.year - d2.year;
+    return date_compare(q, p);
 }
 
-void sort_dates(date_t* dates, int num_dates, int asc)
+void sort_dates(date_t* dates, int num_dates, int reverse)
 {
-    if (asc)
+    if (!reverse)
         qsort((void*) dates, num_dates, sizeof(dates[0]),
-              date_comparator);
+              date_compare);
     else
         qsort((void*) dates, num_dates, sizeof(dates[0]),
-              date_reverse_comparator);
+              date_rev_compare);
 }

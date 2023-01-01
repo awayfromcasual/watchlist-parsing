@@ -5,8 +5,7 @@
 #define INPUT_FORMAT DD_MMM_YYYY
 
 // For sorting dates
-#define ASCENDING  true
-#define DESCENDING false
+#define REVERSE 1
 
 // The name of each month
 extern const char* month_names[13];
