@@ -5,12 +5,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+const char* month_names[13] = {"err", "Jan", "Feb", "Mar", "Apr",
+                               "May", "Jun", "Jul", "Aug", "Sep",
+                               "Oct", "Nov", "Dec"};
+
 void date_to_string(date_t date, char* dest)
 {
-    char* month_names[13] = {"err", "Jan", "Feb", "Mar", "Apr",
-                             "May", "Jun", "Jul", "Aug", "Sep",
-                             "Oct", "Nov", "Dec"};
-
     // Store formatted string
     if (date.month == 0)
         sprintf(dest, "err 00, 0000");
@@ -36,10 +36,6 @@ date_t string_to_date(char* src)
         sscanf(src, "%[a-zA-Z]-%d-%d", month_str, &day, &year);
     else if (INPUT_FORMAT == DD_MMM_YYYY)
         sscanf(src, "%d-%[a-zA-Z]-%d", &day, month_str, &year);
-
-    char* month_names[13] = {"err", "Jan", "Feb", "Mar", "Apr",
-                             "May", "Jun", "Jul", "Aug", "Sep",
-                             "Oct", "Nov", "Dec"};
 
     for (int i = 0; i < 13; i++)
     {

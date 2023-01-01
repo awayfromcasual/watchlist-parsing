@@ -8,6 +8,9 @@
 #define ASCENDING  true
 #define DESCENDING false
 
+// The name of each month
+extern const char* month_names[13];
+
 // Struct for storing dates
 typedef struct date
 {
