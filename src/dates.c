@@ -59,10 +59,17 @@ int date_compare(const void* p, const void* q)
     date_t d2 = *(const date_t*) q;
 
     if (d1.year == d2.year)
+    {
         return (d1.month == d2.month) ? (d1.day - d2.day)
                                       : (d1.month - d2.month);
+    }
 
     return d1.year - d2.year;
+}
+
+int date_asc_compare(const void* p, const void* q)
+{
+    return date_compare(q, p);
 }
 
 int date_rev_compare(const void* p, const void* q)
@@ -74,7 +81,7 @@ void sort_dates(date_t* dates, int num_dates, int reverse)
 {
     if (!reverse)
         qsort((void*) dates, num_dates, sizeof(dates[0]),
-              date_compare);
+              date_asc_compare);
     else
         qsort((void*) dates, num_dates, sizeof(dates[0]),
               date_rev_compare);

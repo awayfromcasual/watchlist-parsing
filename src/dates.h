@@ -37,6 +37,12 @@ date_t string_to_date(char* src);
 //  - Param allows a \t or a \n character to be inserted.
 void print_date(date_t date, char c);
 
+// Compare dates
+int date_asc_compare(const void* p, const void* q);
+
+// Compare dates (in reverse)
+int date_rev_compare(const void* p, const void* q);
+
 // Sort an array of type date_t[]
 //  - Param allows for ascending or descending sort order.
-void sort_dates(date_t* dates, int num_dates, int asc);
+void sort_dates(date_t* dates, int num_dates, int reverse);
