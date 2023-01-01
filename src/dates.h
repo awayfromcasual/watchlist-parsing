@@ -26,23 +26,23 @@ typedef enum formats
 } format_t;
 
 // Convert date to string and store it in dest
-//  - String will be of the form (Jul-02-2022)
+//  - String will be of the form (Jul 02, 2022)
 void date_to_string(date_t date, char* dest);
 
 // Convert string to date
 //  - String must be in the form specified by INPUT_FORMAT.
 date_t string_to_date(char* src);
 
-// Print a date in the form (Jul-02-2022)
+// Print a date
 //  - Param allows a \t or a \n character to be inserted.
 void print_date(date_t date, char c);
 
 // Compare dates
-int date_asc_compare(const void* p, const void* q);
-
-// Compare dates (in reverse)
-int date_rev_compare(const void* p, const void* q);
+//  - Returns (< 0) if p goes before q
+//  - Returns (= 0) if p and q are equivalent
+//  - Returns (> 0) if p goes after q
+int compare_dates(const void* p, const void* q);
 
 // Sort an array of type date_t[]
-//  - Param allows for ascending or descending sort order.
+//  - Param gives option to reverse sort order.
 void sort_dates(date_t* dates, int num_dates, int reverse);

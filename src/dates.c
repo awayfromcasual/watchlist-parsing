@@ -13,7 +13,7 @@ void date_to_string(date_t date, char* dest)
 {
     // Store formatted string
     if (date.month == 0)
-        sprintf(dest, "err 00, 0000");
+        sprintf(dest, "err --, ----");
     else if (date.day < 10)
         sprintf(dest, "%s 0%d, %d", month_names[date.month],
                 date.day, date.year);
@@ -53,36 +53,33 @@ void print_date(date_t date, char c)
     printf("%s%c", text, c);
 }
 
-int date_compare(const void* p, const void* q)
+int compare_dates(const void* p, const void* q)
 {
     date_t d1 = *(const date_t*) p;
     date_t d2 = *(const date_t*) q;
 
     if (d1.year == d2.year)
-    {
         return (d1.month == d2.month) ? (d1.day - d2.day)
                                       : (d1.month - d2.month);
-    }
 
     return d1.year - d2.year;
 }
 
-int date_asc_compare(const void* p, const void* q)
-{
-    return date_compare(q, p);
-}
-
-int date_rev_compare(const void* p, const void* q)
-{
-    return date_compare(q, p);
-}
-
 void sort_dates(date_t* dates, int num_dates, int reverse)
 {
-    if (!reverse)
-        qsort((void*) dates, num_dates, sizeof(dates[0]),
-              date_asc_compare);
-    else
-        qsort((void*) dates, num_dates, sizeof(dates[0]),
-              date_rev_compare);
+    qsort((void*) dates, num_dates, sizeof(dates[0]),
+          compare_dates);
+
+    if (reverse)
+    {
+        int l = 0, r = num_dates - 1;
+        while (l < r)
+        {
+            date_t temp = dates[l];
+            dates[l] = dates[r];
+            dates[r] = temp;
+            l++;
+            r--;
+        }
+    }
 }
