@@ -1,5 +1,6 @@
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #define BUF_SIZE 200
 
@@ -20,6 +21,13 @@ int main()
     printf("%s\n", end_date);
     printf("%s\n", title);
     printf("%s\n", score);
+
+    char quit = 'a';
+    while (quit != 'q')
+    {
+        printf("\nType 'q' to quit: ");
+        scanf("%c", &quit);
+    }
 
     return 0;
 }
