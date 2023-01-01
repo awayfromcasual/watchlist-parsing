@@ -24,7 +24,7 @@ typedef enum formats
 
 // Convert date to string.
 //  - String will be of the form (Jul-02-2022)
-void date_to_string(date_t date, char* res);
+void date_to_string(date_t date, char* dest);
 
 // Convert date to string
 //  -   String must be in the form specified by INPUT_FORMAT.
