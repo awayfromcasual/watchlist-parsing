@@ -22,7 +22,7 @@ typedef enum formats
     DD_MMM_YYYY
 } format_t;
 
-// Convert date to string.
+// Convert date to string and store it in dest.
 //  - String will be of the form (Jul-02-2022)
 void date_to_string(date_t date, char* dest);
 
@@ -32,7 +32,7 @@ void date_to_string(date_t date, char* dest);
 date_t string_to_date(char* src);
 
 // Prints a date in the form (Jul-02-2022)
-//  - Argument allows a \t or a \n character to be inserted.
+//  - char c allows a \t or a \n character to be inserted.
 void print_date(date_t date, char c);
 
 // Takes in an array of type date_t[] and sorts it
