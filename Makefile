@@ -41,6 +41,9 @@ $(OBJ)/%.o: $(SRC)/%.c
 run:
 	@$(BINARY)
 
+test:
+	@$(BINARY) example.txt
+
 clean:
 	@del /s *.o *.d *.exe
 
