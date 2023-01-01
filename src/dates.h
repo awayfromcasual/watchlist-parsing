@@ -29,9 +29,10 @@ void date_to_string(date_t date, char* dest);
 // Convert date to string
 //  -   String must be in the form specified by INPUT_FORMAT.
 //  Options for the input format are in the format enum.
-date_t string_to_date(char* s);
+date_t string_to_date(char* src);
 
 // Prints a date in the form (Jul-02-2022)
+//  - Argument allows a \t or a \n character to be inserted.
 void print_date(date_t date, char c);
 
 // Takes in an array of type date_t[] and sorts it

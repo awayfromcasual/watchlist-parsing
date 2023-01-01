@@ -22,10 +22,10 @@ void date_to_string(date_t date, char* dest)
                 date.day, date.year);
 }
 
-date_t string_to_date(char* s)
+date_t string_to_date(char* src)
 {
     // Empty date
-    if (*s == '-')
+    if (*src == '-')
         return (date_t){0, 0, 0};
 
     char month_str[4];
@@ -33,9 +33,9 @@ date_t string_to_date(char* s)
 
     // Parse string
     if (INPUT_FORMAT == MMM_DD_YYYY)
-        sscanf(s, "%[a-zA-Z]-%d-%d", month_str, &day, &year);
+        sscanf(src, "%[a-zA-Z]-%d-%d", month_str, &day, &year);
     else if (INPUT_FORMAT == DD_MMM_YYYY)
-        sscanf(s, "%d-%[a-zA-Z]-%d", &day, month_str, &year);
+        sscanf(src, "%d-%[a-zA-Z]-%d", &day, month_str, &year);
 
     char* month_names[13] = {"err", "Jan", "Feb", "Mar", "Apr",
                              "May", "Jun", "Jul", "Aug", "Sep",
