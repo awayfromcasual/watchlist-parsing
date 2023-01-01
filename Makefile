@@ -49,7 +49,6 @@ clean:
 
 dir:
 	@dir
-	@dir obj
 	@dir src
 
 diff:
