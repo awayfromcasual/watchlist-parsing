@@ -32,7 +32,7 @@ void date_to_string(date_t date, char* res);
 date_t string_to_date(char* s);
 
 // Prints a date in the form (Jul-02-2022)
-void print_date(date_t date, int newline);
+void print_date(date_t date, char c);
 
 // Takes in an array of type date_t[] and sorts it
 void sort_dates(date_t* dates, int num_dates, int asc);

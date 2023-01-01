@@ -12,7 +12,9 @@ void date_to_string(date_t date, char* dest)
                              "Oct", "Nov", "Dec"};
 
     // Store formatted string
-    if (date.day < 10)
+    if (date.month == 0)
+        sprintf(dest, "err 00, 0000");
+    else if (date.day < 10)
         sprintf(dest, "%s 0%d, %d", month_names[date.month],
                 date.day, date.year);
     else
@@ -48,14 +50,11 @@ date_t string_to_date(char* s)
     return (date_t){month, day, year};
 }
 
-void print_date(date_t date, int newline)
+void print_date(date_t date, char c)
 {
     char text[20];
     date_to_string(date, text);
-    printf("%s", text);
-
-    if (newline)
-        printf("\n");
+    printf("%s%c", text, c);
 }
 
 int date_comparator(const void* p, const void* q)

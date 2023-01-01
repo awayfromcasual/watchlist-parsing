@@ -41,7 +41,7 @@ $(OBJ)/%.o: $(SRC)/%.c
 run:
 	@$(BINARY)
 
-test:
+test: all
 	@$(BINARY) example.txt
 
 clean:
