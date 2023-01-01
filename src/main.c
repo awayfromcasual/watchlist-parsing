@@ -1,5 +1,6 @@
 
 #include "dates.h"
+#include "entries.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,7 +9,7 @@
 
 int main(int argc, char** argv)
 {
-    printf("Hello, Fen!\n");
+    printf("Hi, Fen!\n");
 
     /*
      */
@@ -35,6 +36,8 @@ int main(int argc, char** argv)
                score);
     }
 
+    printf("\n--------\n");
+
     /*
      */
 
@@ -42,29 +45,14 @@ int main(int argc, char** argv)
     file_ptr = fopen(argv[1], "r");
     fgets(input, BUFFER_SIZE, file_ptr);
 
-    // Parse input
-    char start_date[13], end_date[13], title[100], score[4];
-    sscanf(input, "%s %s %[^\t] %s", start_date, end_date, title,
-           score);
-
-    date_t date1 = string_to_date(start_date);
-    date_t date2 = string_to_date(end_date);
-
-    print_date(date1, '\t');
-    print_date(date2, '\n');
-
-    printf("f");
+    // Convert input to entry
+    entry_t entry = string_to_entry(input);
+    print_entry(entry, '\n');
 
     /*
      */
 
-    // Quit prompt
-    char quit = 'a';
-    while (quit != 'q')
-    {
-        printf("\nType 'q' to quit: ");
-        scanf("%c", &quit);
-    }
+    printf("Bye, Fen.");
 
     return 0;
 }
