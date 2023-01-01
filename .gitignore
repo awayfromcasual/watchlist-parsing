@@ -1,0 +1,12 @@
+
+# Text files
+*.txt
+
+# Prerequisites
+*.d
+
+# Object files
+*.o
+
+# Executables
+*.exe
