@@ -54,5 +54,36 @@ int main(int argc, char** argv)
 
     printf("Bye, Fen.");
 
+    printf("Hello, Fen!\n");
+
+    // Get the number of entries
+    int N = 0;
+    scanf("%d", &N);
+
+    // Get the entries
+    date_t dates[N];
+    for (int i = 0; i < N; i++)
+    {
+        int m, d, y;
+        scanf("%d-%d-%d", &m, &d, &y);
+
+        dates[i] = (date_t){m, d, y};
+    }
+
+    printf("\n----------------\n");
+
+    // Sort the entries
+    sort_dates(dates, sizeof(dates) / sizeof(dates[0]), 0);
+
+    // Print sorted dates
+    for (int i = 0; i < N; i++)
+    {
+        if (i > 0 && dates[i].month != dates[i - 1].month)
+            printf("\n");
+        print_date(dates[i], '\n');
+    }
+
+    printf("\n----------------\n");
+
     return 0;
 }
